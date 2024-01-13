@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.10;
 
-import "./UniswapInterface.sol";
+//import "./UniswapInterface.sol";
+
+import "https://github.com/Uniswap/v2-periphery/blob/master/contracts/interfaces/IUniswapV2Router02.sol";
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
@@ -31,7 +33,7 @@ contract EasyLiquidityProvider {
         path[0] = _tokenFrom;
         path[1] = _tokenTo;
 
-        return IUniswapV2Router(UNISWAP_ROUTER).swapExactTokensForTokens(
+        return IUniswapV2Router02(UNISWAP_ROUTER).swapExactTokensForTokens(
                    _amountFrom,
                    0,
                    path,
@@ -59,7 +61,7 @@ contract EasyLiquidityProvider {
 
         IERC20(_tokenA).approve(UNISWAP_ROUTER, _amountA);
         IERC20(_tokenB).approve(UNISWAP_ROUTER, _amountB);
-        IUniswapV2Router(UNISWAP_ROUTER).addLiquidity(
+        IUniswapV2Router02(UNISWAP_ROUTER).addLiquidity(
                 _tokenA,
                 _tokenB,
                 _amountA,
