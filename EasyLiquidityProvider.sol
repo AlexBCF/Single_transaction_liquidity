@@ -25,7 +25,7 @@ contract EasyLiquidityProvider {
         address _tokenTo,
         uint _amountFrom
     ) internal returns (uint[] memory) {
-        IERC20(_tokenFrom).transferFrom(msg.sender, address(this), _amountFrom);
+        IERC20(_tokenFrom).transferFrom(msg.sender, address(this), _amountFrom); /// delete
         IERC20(_tokenFrom).approve(UNISWAP_ROUTER, _amountFrom);
 
         address[] memory path;
